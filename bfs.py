@@ -14,7 +14,6 @@ class BFS:
 
   def logic(self):
     if self.begin and (len(self.visited) < self.Grid.size and len(self.queue) > 0):
-      print(len(self.queue))
       neighbours = self.Grid.getNeighbours(self.queue[0])
       for i in neighbours:
         col, row = self.queue[0][0], self.queue[0][1]
@@ -54,5 +53,8 @@ class BFS:
     for cell in self.visited:
       if cell == self.startSquare:
         continue
+      elif len(self.queue) > 0 and self.queue[0]:
+        pygame.draw.rect(win, 'blue', pygame.Rect((cell[0]*self.Grid.cellSize + 2, cell[1] * self.Grid.cellSize + 2), (self.Grid.cellSize - 1, self.Grid.cellSize - 1)))  
       pygame.draw.rect(win, 'violet', pygame.Rect((cell[0]*self.Grid.cellSize + 2, cell[1] * self.Grid.cellSize + 2), (self.Grid.cellSize - 1, self.Grid.cellSize - 1)))
+    
     
